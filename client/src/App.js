@@ -14,21 +14,13 @@ function App() {
   return(
     <Router>
       <Routes>
-        <Route exact path='/login'>
-          <LoginPage />
-        </Route>
-        <Route exact path='/register'>
-          <RegisterPage />
-        </Route>
-        <Route exact path='/dashboard'>
-          <Dashboard />
-        </Route>
-        <Route path='/'>
-          <Navigate to="/dashboard" />
-        </Route>
+        <Route exact path='/login' element={<LoginPage />} />
+        <Route exact path='/register' element={<RegisterPage />}/>
+        <Route exact path='/dashboard' element={<Dashboard />}/>
+        <Route path='/' element={<Navigate to="/dashboard" />} />
       </Routes>
     </Router>
   )
-}
+};
 
 export default App;

@@ -8,7 +8,7 @@ const BoxWrapper = styled('div')({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: '#41CE96'
+    background: '#33966f'
 })
 
 const AuthBox = (props) => {

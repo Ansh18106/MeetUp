@@ -13,35 +13,30 @@ export const postRegister = async(req, res) => {
         }
 
         // encrypt the password
-        const encryptedPassword = await bcrypt.hash(password, 10);
-
-        // create new user and save in DB
-        const user = await User.create({
-            username,
-            mail: mail.toLowerCase(),
-            password: encryptedPassword
-        });
-
-        // create JWT token
-        const token = jwt.sign(
-            {
-                userId: user._id,
-                mail
-            },
-            process.env.TOKEN_KEY,
-            {
-                expiresIn: '24h'
-            }
-        );
-                
-        res.status(201).json({
-            userDetails: {
-                username: user.username,
-                mail: user.mail,
-                token: token
-            }
-        })
-
+        bcrypt.hash(password, 10, async (err, hash) => {
+            if (err) throw(err);
+            // create new user and save in DB
+            const user = await User.create({
+                username,
+                mail: mail.toLowerCase(),
+                password: hash
+            });
+            // create JWT token
+            const token = jwt.sign({
+                    userId: user._id,
+                    mail
+                },process.env.TOKEN_KEY,{
+                    expiresIn: '24h'
+                }
+                );
+                res.status(201).json({
+                    userDetails: {
+                        username: user.username,
+                        mail: user.mail,
+                        token: token
+                    }
+                })
+            });              
     } catch (err) {
         return res.status(500).send(err);
     }

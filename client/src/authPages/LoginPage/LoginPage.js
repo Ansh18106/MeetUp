@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import AuthBox from '../../shared/components/AuthBox';
-import LoginPageHeader from './LoginPageHeader';
-import LoginPageInputs from './LoginPageInputs';
-import LoginPageFooter from './LoginPageFooter';
-import { validateLoginForm } from '../../shared/utils/validation';
+import React, { useState, useEffect } from "react";
+import AuthBox from "../../shared/components/AuthBox";
+import LoginPageHeader from "./LoginPageHeader";
+import LoginPageInputs from "./LoginPageInputs";
+import LoginPageFooter from "./LoginPageFooter";
+import { validateLoginForm } from "../../shared/utils/validation";
 import { connect } from "react-redux";
-import { getActions } from '../../store/actions/authAction';
-import { useNavigate } from 'react-router-dom';
+import { getActions } from "../../store/actions/authAction";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = ({ login }) => {
   const navigate = useNavigate();
@@ -18,31 +18,28 @@ const LoginPage = ({ login }) => {
   useEffect(() => {
     setIsFormValid(validateLoginForm({ mail, password }));
   }, [mail, password, setIsFormValid]);
-  
+
   const handleLogin = () => {
     const userDetails = {
       mail,
       password,
-    }
+    };
     login(userDetails, navigate);
-  }
+  };
 
   return (
     <AuthBox>
-      <LoginPageHeader/>
+      <LoginPageHeader />
       <LoginPageInputs
         mail={mail}
         setMail={setMail}
         password={password}
         setPassword={setPassword}
       />
-      <LoginPageFooter
-        isFormValid={isFormValid}
-        handleLogin={handleLogin}
-      />
+      <LoginPageFooter isFormValid={isFormValid} handleLogin={handleLogin} />
     </AuthBox>
-  )
-}
+  );
+};
 
 const mapActionsToProps = (dispatch) => {
   return {

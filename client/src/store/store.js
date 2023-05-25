@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import authReducer from './reducers/authReducer.js';
 import alertReducer from './reducers/alertReducer.js'
 
+// reducer is a function that accepts previous state and an action to be performed and return the updated state of the app.
 const rootReducer = combineReducers({
 	auth: authReducer,
 	alert: alertReducer,

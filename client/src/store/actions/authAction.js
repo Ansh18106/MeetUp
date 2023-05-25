@@ -1,5 +1,5 @@
 import * as api from '../../api';
-import AlertNotifications from '../../shared/components/AlertNotifications';
+// import AlertNotifications from '../../shared/components/AlertNotifications';
 import { openAlertMessage } from './alertActions';
 
 export const authActions = {

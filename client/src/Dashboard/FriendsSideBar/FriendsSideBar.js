@@ -2,8 +2,8 @@ import React from "react";
 import { styled } from "@mui/material";
 import AddFriendButton from "./AddFriendButton";
 import FriendsTitle from "./FriendsTitle";
-import FriendsList from "./FriendsList";
-import PendingInvitationList from "./PendingInvitationList";
+import FriendsList from "./FriendsList/FriendsList";
+import PendingInvitationList from "./PendingInvitationList/PendingInvitationList";
 
 const MainContainer = styled("div")({
   width: "224px",
